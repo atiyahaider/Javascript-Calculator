@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css?family=Quantico");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: box-border;
+}
+
+#CalculatorApp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#container {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+}
+
+#calculator {
+  margin-top: 20px;
+  border: 1px solid black;
+  background-color: black;
+  padding: 6px;
+  border-radius: 4px;
+  width: 240px;
+}
+
+#display-box {
+  border: 1px solid gray;
+  background-color: #ccccb3;
+  color: black;
+  text-align: right;
+  font-size: 20px;
+  font-family: 'Quantico', open-sans;
+  margin-bottom: 10px;
+  box-shadow: inset 2px 2px 5px black;
+  border-radius: 2px;
+}
+
+#expression {
+  word-wrap: break-word;
+  font-size: 15px;
+}
+
+#display {
+  word-wrap: break-word;
+}
+
+#buttons {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-row-gap: 6px;
+  grid-column-gap: 6px;
+}
+
+button {
+  font-size: 30px;
+  background-color: #333333;
+  border-radius: 2px;
+  border: 1px solid white;
+  padding: 5px 18px;
+  box-shadow: inset 2px 3px 3px gray, 1px 1px 1px white;
+}
+button:hover {
+  background-color: gray;
+  box-shadow: inset 1px 2px 3px black, 1px 1px 1px white;
+}
+
+.numbers {
+  color: red;
+}
+
+.operator {
+  color: green;
+}
+
+#clear {
+  background-color: #862d2d;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  box-shadow: 1px 2px 3px gray, 1px 1px 1px white;
+}
+#clear:hover {
+  background-color: gray;
+  box-shadow: inset 1px 2px 3px black, 1px 1px 1px white;
+}
+
+#zero {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#equals {
+  background-color: #85adad;
+  grid-row-start: 4;
+  grid-row-end: 6;
+  grid-column-start: 4;
+  box-shadow: 1px 2px 3px gray, 1px 1px 1px white;
+}
+#equals:hover {
+  background-color: gray;
+  box-shadow: inset 1px 2px 3px black, 1px 1px 1px white;
+}
+
+#footer {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 0.9em;
+}
