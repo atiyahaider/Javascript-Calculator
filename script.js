@@ -6,10 +6,10 @@ class Display extends React.Component {
     return (
       React.createElement("div", { id: "display-box" },
       React.createElement("div", { id: "expression" }, this.props.expression),
-      React.createElement("div", { id: "display" }, this.props.entry)));
-
-
-  }}
+      React.createElement("div", { id: "display" }, this.props.entry))
+    );
+  }
+}
 
 
 class Buttons extends React.Component {
@@ -32,23 +32,20 @@ class Buttons extends React.Component {
       React.createElement("button", { id: "three", class: "numbers", value: "3", onClick: this.props.handleNumbers }, "3"),
       React.createElement("button", { id: "zero", class: "numbers", value: "0", onClick: this.props.handleNumbers }, "0"),
       React.createElement("button", { id: "decimal", class: "numbers", value: ".", onClick: this.props.handleDecimal }, "."),
-      React.createElement("button", { id: "equals", value: "=", onClick: this.props.handleResult }, "=")));
-
-
-  }}
-
+      React.createElement("button", { id: "equals", value: "=", onClick: this.props.handleResult }, "="))
+    );
+  }
+}
 
 class Footer extends React.Component {
   render() {
     return (
       React.createElement("div", { id: "footer" },
       React.createElement("p", null, "Designed and coded by"),
-      React.createElement("a", { target: "_blank", href: "https://s.codepen.io/atiyahaider/debug/oaZxeb/dGrXWdOKgPWM" }, "Atiya Haider")));
-
-
-  }}
-
-
+      React.createElement("a", { target: "_blank", href: "https://s.codepen.io/atiyahaider/debug/oaZxeb/dGrXWdOKgPWM" }, "Atiya Haider"))
+    );
+  }
+}
 
 class Calculator extends React.Component {
   constructor(props) {
@@ -58,8 +55,8 @@ class Calculator extends React.Component {
       entry: '0',
       pushed: false,
       lastOperator: '',
-      lastNumber: '0' };
-
+      lastNumber: '0' 
+    };
 
     this.handleClear = this.handleClear.bind(this);
     this.handleNumbers = this.handleNumbers.bind(this);
@@ -75,8 +72,8 @@ class Calculator extends React.Component {
       entry: '0',
       pushed: false,
       lastOperator: '',
-      lastNumber: '0' });
-
+      lastNumber: '0' 
+    });
   }
 
   handleNumbers(e) {
@@ -89,8 +86,8 @@ class Calculator extends React.Component {
         lastOperator: '',
         lastNumber: '0' });
 
-    } else
-    {
+    } 
+    else {
       //if a number has been previously stored in the array and now a new number is being entered, store the operator
       if (this.state.pushed) {
         var tmpOperator = this.state.expression.substr(this.state.expression.length - 1, 1);
@@ -118,12 +115,12 @@ class Calculator extends React.Component {
       this.setState({ expression: this.state.entry + e.target.value, //get result from prev evaluation
         pushed: true,
         lastNumber: this.state.entry });
-    } else
-    {
+    } 
+    else {
       if (endsWithOperator.test(this.state.expression)) {//operator entered after a prev operator, replace with new operator
         this.setState({ expression: this.state.expression.substring(0, this.state.expression.length - 1) + e.target.value });
-      } else
-      {// new operator, push prev number
+      } 
+      else {// new operator, push prev number
         calculationArr.push(this.state.entry);
         this.setState({ expression: this.state.expression + e.target.value,
           pushed: true,
@@ -142,8 +139,8 @@ class Calculator extends React.Component {
         entry: '0' + e.target.value,
         pushed: false,
         lastOperator: tmpOperator });
-    } else
-    {
+    } 
+    else {
       if (!this.state.entry.includes('.'))
       this.setState({ expression: this.state.expression + e.target.value,
         entry: this.state.entry + e.target.value });
@@ -154,8 +151,8 @@ class Calculator extends React.Component {
     //if prev expression had been evaluated, and '=' pressed again, perform the last operation on the result with the last operand
     if (this.state.expression.includes('=')) {
       calculationArr = [this.state.entry, this.state.lastOperator, this.state.lastNumber]; //start new calculation from prev result
-    } else
-    {
+    } 
+    else {
       if (endsWithOperator.test(this.state.expression)) {//operator entered right before '=', push the operator
         calculationArr.push(this.state.expression.substr(this.state.expression.length - 1, 1));
         this.setState({ lastOperator: calculationArr[calculationArr.length - 1] });
@@ -177,8 +174,7 @@ class Calculator extends React.Component {
           calculationArr.splice(i, 2);
           i -= 1;
         }
-      } while (
-      i !== -1);
+      } while (i !== -1);
 
       //Evaluate division first
       i = 0;
@@ -189,8 +185,7 @@ class Calculator extends React.Component {
           calculationArr.splice(i, 2);
           i -= 1;
         }
-      } while (
-      i !== -1);
+      } while (i !== -1);
     }
 
     let result = Math.round(1000000000000 * eval(calculationArr.join(''))) / 1000000000000;
@@ -198,8 +193,8 @@ class Calculator extends React.Component {
     if (this.state.expression.includes('=')) {//pressing just equal again after an evaluation
       this.setState({ expression: this.state.entry + this.state.lastOperator + this.state.lastNumber + e.target.value + result,
         pushed: false }); //get result from prev evaluation, and the last operator and operand
-    } else
-    {
+    } 
+    else {
       if (endsWithOperator.test(this.state.expression)) //operator entered right before '=', perform operation on first operand
         this.setState({ expression: this.state.expression + this.state.lastNumber + e.target.value + result });else
         //normal case
@@ -224,10 +219,10 @@ class Calculator extends React.Component {
         handleDecimal: this.handleDecimal,
         handleResult: this.handleResult })),
 
-      React.createElement(Footer, null)));
-
-
-  }}
+      React.createElement(Footer, null))
+    );
+  }
+}
 
 
 ReactDOM.render(React.createElement(Calculator, null), document.getElementById('CalculatorApp'));
